@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Bootstrap : MonoBehaviour
 {
@@ -8,5 +7,7 @@ public class Bootstrap : MonoBehaviour
         Application.targetFrameRate = 60;
         DontDestroyOnLoad(gameObject);
     }
-    async Awaitable Start() => await SceneManager.LoadSceneAsync("Menu");
+
+    async Awaitable Start() =>
+        await SceneLoader.Instance.Load("Menu", Application.exitCancellationToken);
 }

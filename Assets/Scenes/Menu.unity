@@ -374,7 +374,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2074301075}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadButton, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 5
         m_Arguments:
@@ -673,9 +673,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074301070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8a0bee7af031344a56ff0b54084bc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e89b693083450147bce5880ac35437c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
+  m_EditorClassIdentifier: Assembly-CSharp::LoadButton
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
