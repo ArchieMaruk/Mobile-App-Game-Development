@@ -1,4 +1,3 @@
-
 ## Date: 15/09/26
 
 The first core verb for my game would be to swipe(dodge/turn) and the first thing I would cut if time ran out would be movement form side to side, I would restrict it only sliding and jumping
@@ -11,13 +10,13 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 
 ---
 
-| Test                                         | Should happen                                  |
-| -------------------------------------------- | ---------------------------------------------- |
-| Press Home, wait 10 s, come back             | Paused, panel showing, no sound ✅              |
-| Pull the notification shade down and up      | Paused ✅                                       |
-| Get a neighbour to call you, then hang up    | Paused, and only resumes when you tap Resume ✅ |
-| Power button off, then on                    | Paused ✅                                       |
-| Force stop in Settings > Apps, then relaunch | Progress is still there✅                       |
+|Test|Should happen|
+|---|---|
+|Press Home, wait 10 s, come back|Paused, panel showing, no sound ✅|
+|Pull the notification shade down and up|Paused ✅|
+|Get a neighbour to call you, then hang up|Paused, and only resumes when you tap Resume ✅|
+|Power button off, then on|Paused ✅|
+|Force stop in Settings > Apps, then relaunch|Progress is still there✅|
 
 ---
 
@@ -88,7 +87,6 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 - First interactive (Fully drawn, median): 2.46 s (2.506 / 2.464 / 2.459)
 - APK size: 71.0 MB (MyGame-0.1.1.apk, ARMv7 + ARM64)
 
-
 ---
 
 ## Date: 07/10/2026
@@ -128,27 +126,73 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 - Project was made with the 2D template. Switched to the Universal (3D) Renderer, Perspective camera, Directional Light and a URP Lit material.
 - New Menu and Result UI was tiny; set their Canvas Scalers to Scale With Screen Size and resized the buttons and settings toggles.
 - Hazards kept spawning and moving while paused. GameManager now sets Time.timeScale to 0 on pause and 1 on resume.
+- First 0.3.0 release build only had ARMv7, because ARM64 was still unticked from the dev build. Rebuilt with both.
+
+---
+
+## Date: 12/10/2026
+
+### Week 5 Lab B – Lane definition
+
+- Biome: kitchen, flat colours (floor, red hazards, yellow pickups).
+- Chunk types (5): single block (dodge), double block (one lane free), low barrier (jump), high barrier (slide), pickup line (+50).
+- Ramp: speed goes from 10 to 20 and chunks come closer together over the run.
+- Win: survive 2 minutes ("Order up!"). Lose: hit a hazard ("Burnt!").
+
+### Week 5 Lab B – Part A (Greybox)
+
+- Hazards come from four pools (blocks, low barriers, high barriers, pickups); the spawner picks a random chunk type.
+- Collisions are now checked on the player (PlayerHit): Hazard tag loses, Pickup tag adds score.
+- Slide halves the player's height and lowers it, so it fits under high barriers.
+- Jump tuned for more airtime: Jump Force 8, Gravity -15.
+- Result screen shows a win or lose title.
+
+### Week 5 Lab B – Part B and C (Loading)
+
+- Persistent SceneLoader on App in Boot, with a LoadingCanvas and a progress bar. All scene changes from buttons go through it.
+- Broke it on purpose with `while (!op.isDone)`: the bar fills and hangs forever, because with allowSceneActivation off, progress stops at 0.9 and isDone never becomes true. Reverted to `op.progress < 0.9f`.
+- Pressing Home mid-load: load finishes when I come back. Back button on the loading screen: nothing happens.
+
+### Week 5 Lab B – Part D (Measure, release 0.3.1)
+
+- Cold start: 423 / 453 / 455 ms, median 453 ms (was 716 ms in Week 3)
+- Time to interactive: 3.17 s
+- Scene load: Menu 717 ms, Game 145 ms
+- APK size: 54.0 MB
+
+### Week 5 Lab B – Part E (Playtest)
+
+- Confusion 1: the player didn't know what the controls were at the start.
+- Confusion 2: the high walls didn't read as something to slide under.
+- Change first: a short controls hint at the start of the first run, and a different colour and a down arrow on the slide walls.
+
+### Fixes
+
+- Pools threw "The Object you want to instantiate is null" because their Prefab slots were empty; filled them in.
+- High barrier gap was too small to slide under; raised it so its bottom sits at 1.75.
+- Retry button did nothing because its On Click connection hadn't saved; reconnected it.
+- Retry then threw a NullReferenceException when Play wasn't started from Boot (the loader only exists in Boot). LoadButton now falls back to a normal scene load.
+
+---
 
 ## Reflections
 
 ### Week 2 – Lifecycle, accessibility, scope
-Pausing on Home, calls and notifications was easy with OnApplicationPause/Focus, but I learned
-that Time.timeScale = 0 does not stop Update, so input had to be gated separately.
-The accessibility pass was the most useful part: my buttons were only ~20 dp and the haptics
-label was unreadable in greyscale, which I would never have noticed on the editor.
-I switched the game to portrait and set the Canvas Scaler to Scale With Screen Size,
-because the UI was tiny on a real phone. Score saving on force-stop is still not done.
+
+Pausing on Home, calls and notifications was easy with OnApplicationPause/Focus, but I learned that Time.timeScale = 0 does not stop Update, so input had to be gated separately. The accessibility pass was the most useful part: my buttons were only ~20 dp and the haptics label was unreadable in greyscale, which I would never have noticed on the editor. I switched the game to portrait and set the Canvas Scaler to Scale With Screen Size, because the UI was tiny on a real phone. Score saving on force-stop is still not done.
 
 ### Week 3 – Profiling
-I learned to read the Profiler on the device instead of the editor. My game is CPU-bound,
-not GPU-bound: halving the render scale barely changed frame time. The 200 stress cubes were
-drawn one by one (199 draw calls) because their default material is not URP, so the SRP Batcher
-could not group them. Frame time is a steady 16.7 ms with p99 under 17 ms, well inside my budget.
+
+I learned to read the Profiler on the device instead of the editor. My game is CPU-bound, not GPU-bound: halving the render scale barely changed frame time. The 200 stress cubes were drawn one by one (199 draw calls) because their default material is not URP, so the SRP Batcher could not group them. Frame time is a steady 16.7 ms with p99 under 17 ms, well inside my budget.
 
 ### Week 4 – Release pipeline and CA1
-My test phone (Galaxy A02s) only runs 32-bit ARMv7 builds, so release builds include ARMv7 + ARM64.
-I changed the package name once to all lower case (com.archil.whopper) before any release, and
-it will not change again. versionCode is 4 because earlier test builds had used 1–3.
-I learned that Unity added an INTERNET permission and tries to contact Unity's servers, so my
-privacy statement had to describe that honestly rather than claim "no network".
-Testing on a second phone (Galaxy S25, Android 16) showed no layout issues.
+
+My test phone (Galaxy A02s) only runs 32-bit ARMv7 builds, so release builds include ARMv7 + ARM64. I changed the package name once to all lower case (com.archil.whopper) before any release, and it will not change again. versionCode is 4 because earlier test builds had used 1–3. I learned that Unity added an INTERNET permission and tries to contact Unity's servers, so my privacy statement had to describe that honestly rather than claim "no network". Testing on a second phone (Galaxy S25, Android 16) showed no layout issues.
+
+### Week 5 Lab A – Skeleton, Awaitable and pooling
+
+The game now has a full loop: Boot, Menu, Game and Result, with a GameManager state machine. I had no coroutines to convert, so the hazard spawner was written with Awaitable and a cancellation token from the start. Pooling the hazards means nothing is instantiated during play, and the phone capture showed 0 B from my scripts (18 B per frame in total, all Unity internal). I learned that Git cannot have a branch called `feat` and one called `feat/something`, and that Unity 6.6 saves Profiler captures straight into the ProfilerCaptures folder with no prompt. Starting from the 2D template cost me time: I had to swap the renderer, camera and light to go 3D.
+
+### Week 5 Lab B – Greybox lane and loading
+
+The game now has a full lane: five chunk types, a speed ramp, and a 2-minute win. Making the player check its own collisions was simpler than having every hazard do it, especially once pickups were added. The most useful part was breaking the loader on purpose: I now know why `isDone` never becomes true while scene activation is held back. Cold start dropped to 453 ms. The playtest showed the game needs to explain itself: a new player didn't know the controls and didn't realise the high walls could be slid under.

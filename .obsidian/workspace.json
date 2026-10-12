@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/CA2/baseline/baseline-sheet.md",
+                "file": "docs/dev-journal.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "baseline-sheet"
+              "title": "dev-journal"
             }
           }
         ]
@@ -188,17 +188,17 @@
   },
   "active": "e0594ce172656d24",
   "lastOpenFiles": [
-    "Temp/__Backupscenes/0.backup",
-    "Temp/UnityTempFile-625c3530fef273c4e8ed245b5ec0d7e5",
-    "Temp/__Backupscenes",
-    "Temp/UnityTempFile-48af2a26650eb8a4989d9de10f11f589",
-    "Temp/UnityTempFile-daafafb73678af74898ba4ff3916ac30",
-    "Temp/Burst/burst-aotaeyetwmd.mwn",
+    "docs/CA2/baseline/baseline-sheet.md",
+    "Library/BuildHistory/20261012-213429Z-0cc7082d/BuildPlayerTEP.json",
+    "Library/BuildHistory/20261012-213429Z-0cc7082d/0cc7082dd7d17ee4a9ce1ac14c9b03ef.buildreport",
+    "Temp/UnityTempFile-648a412cb43bf4b4489cd24c61b1b309",
+    "Temp/ADB-Refresh972576b71289a434592c5ce833502f36",
+    "Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/stripped_native_libs/release/stripReleaseDebugSymbols/out/lib/armeabi-v7a/libil2cpp.so.temp-stream-66ef10",
+    "Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3856733d/logs/armeabi-v7a/generate_cxx_metadata_408_timing.txt",
+    "Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3856733d/logs/arm64-v8a/generate_cxx_metadata_408_timing.txt",
+    "Temp/StagingArea/gradleWarmupArea/settings.gradle",
+    "Temp/StagingArea/gradleWarmupArea",
     "Library/Bee/TundraBuildState.state",
-    "Library/Bee/artifacts/1300b0aE.dag/post-processed/Assembly-CSharp.pdb",
-    "Library/Bee/artifacts/1300b0aE.dag/post-processed/Assembly-CSharp.dll",
-    "Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.ref.dll",
-    "Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.pdb",
     "docs/dev-journal.md",
     "README.md",
     "ProfilerCaptures/Mobile App Game Dev_2026-10-07_19-13-43.png",
@@ -223,7 +223,6 @@
     "Mobile Game Dev Vault/W04-LabA-LabSheet.md",
     "docs/CA2/baseline/w03-sampler-log.png",
     "docs/CA2/baseline/image.png",
-    "docs/CA2/baseline/baseline-sheet.md",
     "Mobile Game Dev Vault/Labsheets/W03-LabB-LabSheet.md",
     "Mobile Game Dev Vault/Labsheets/W03-LabA-LabSheet.md",
     "Mobile Game Dev Vault/Labsheets/W02-LabB-LabSheet.md",
