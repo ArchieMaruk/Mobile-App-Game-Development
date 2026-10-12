@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/dev-journal.md",
+                "file": "docs/CA2/baseline/baseline-sheet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dev-journal"
+              "title": "baseline-sheet"
             }
           }
         ]
@@ -188,6 +188,7 @@
   },
   "active": "e0594ce172656d24",
   "lastOpenFiles": [
+    "docs/dev-journal.md",
     "Temp/UnityTempFile-c9e3972395b5afd41bdc79b862f1394a",
     "Temp/UnityTempFile-85e083e828a5a33449b79be4664d238d",
     "Temp/UnityTempFile-3291a5d1496f8a84399984dc7fdbef32",
@@ -198,7 +199,6 @@
     "Temp/Burst/burst-aotp4jzhwyj.jv5/lib_burst_generated_part_fc9b3c30331e4634238ceadc0034dbc1.o",
     "Temp/Burst/burst-aotp4jzhwyj.jv5/lib_burst_generated_part_f171c2fa1ca954ead56d44a6ccdaba77.o",
     "Temp/Burst/burst-aotp4jzhwyj.jv5/lib_burst_generated_part_dfd0abaf38c618d2e5055187853415a0.o",
-    "Temp/Burst/burst-aotp4jzhwyj.jv5/lib_burst_generated_part_d4015a9e8b68219132a23f8b001d93e7.o",
     "README.md",
     "ProfilerCaptures/Mobile App Game Dev_2026-10-07_19-13-43.png",
     "ProfilerCaptures/Mobile App Game Dev_2026-10-07_19-12-48.png",
@@ -206,7 +206,6 @@
     "Mobile Game Dev Vault/W05-LabB-LabSheet.md",
     "Mobile Game Dev Vault/Labsheets/W05-LabA-LabSheet.md",
     "Mobile Game Dev Vault/W05-LabA-LabSheet.md",
-    "docs/dev-journal.md",
     "docs/mda-onepager.md",
     "docs/CA1/device-model.png",
     "docs/CA1/mda-onepager.md",

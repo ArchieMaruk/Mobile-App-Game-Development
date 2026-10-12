@@ -32,7 +32,7 @@ Startup and size
 
 ---
 
-## 7 Oct 2026 – Week 5
+## 7 Oct 2026 – Week 5 Lab A
 
 Build: 0.2.0 (code 4), Dev, commit a116980
 
@@ -51,7 +51,28 @@ Capture: `docs/CA2/baseline/w05-spawner.data`
 
 ---
 
+## 12 Oct 2026 – Week 5 Lab B
+
+Build: 0.3.1 (code 6), Release, commit 86feb90
+
+Startup (budget in brackets)
+- Cold start: 423 / 453 / 455 ms, median 453 ms (budget: under 1000 ms; Android flags 5 s as slow)
+- Time to interactive: 3.17 s (budget: under 4 s)
+
+Scene loads (budget: under 1000 ms)
+- Menu: 717 ms
+- Game: 145 ms
+
+Size
+- APK: 54.0 MB (ARMv7 + ARM64)
+
+What changed
+- Scenes now load through a persistent SceneLoader with a loading bar.
+- Cold start dropped from 716 ms (Week 3) to 453 ms.
+- Time to interactive is now measured with a `[perf]` log on the Menu's first frame, which is a different method from Week 3's "Fully drawn", so the two aren't directly comparable.
+
+---
+
 ## Still to measure
 
-- Load time (Week 5)
 - Thermal delta and throttling (Week 7)
