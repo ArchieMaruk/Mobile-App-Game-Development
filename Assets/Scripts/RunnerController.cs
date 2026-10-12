@@ -32,15 +32,22 @@ public class RunnerController : MonoBehaviour
         float targetX = (currentLane - 1) * laneWidth;
         pos.x = Mathf.Lerp(pos.x, targetX, laneChangeSpeed * Time.deltaTime);
 
-        // Gravity and landing
+
+
+
+
+        // Gravity and landing (lower floor while sliding)
+        float floor = isSliding ? groundY - 0.5f : groundY;
         if (!isGrounded) verticalVelocity += gravity * Time.deltaTime;
         pos.y += verticalVelocity * Time.deltaTime;
-        if (pos.y <= groundY)
+        if (pos.y <= floor)
         {
-            pos.y = groundY;
+            pos.y = floor;
             verticalVelocity = 0f;
             isGrounded = true;
         }
+
+
 
         // Slide timer
         if (isSliding)
@@ -51,6 +58,10 @@ public class RunnerController : MonoBehaviour
 
         transform.position = pos;
     }
+
+
+
+
 
     public void MoveLeft()  { if (currentLane > 0) currentLane--; }
     public void MoveRight() { if (currentLane < 2) currentLane++; }
@@ -64,16 +75,16 @@ public class RunnerController : MonoBehaviour
     }
 
     public void Slide()
-    {
-        if (!isGrounded || isSliding) return;
-        isSliding = true;
-        slideTimer = slideDuration;
-        // TODO: shrink collider / play slide animation here
-    }
+{
+    if (!isGrounded || isSliding) return;
+    isSliding = true;
+    slideTimer = slideDuration;
+    transform.localScale = new Vector3(1f, 0.5f, 1f);
+}
 
-    void EndSlide()
-    {
-        isSliding = false;
-        // TODO: restore collider / animation
-    }
+void EndSlide()
+{
+    isSliding = false;
+    transform.localScale = Vector3.one;
+}
 }
