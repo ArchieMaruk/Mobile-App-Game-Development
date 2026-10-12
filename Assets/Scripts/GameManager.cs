@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public static int LastScore;
 
+    public static bool LastWon;
+
     [SerializeField] float runLength = 120f;
     [SerializeField] float startSpeed = 10f;
     [SerializeField] float maxSpeed = 20f;
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
         StateChanged?.Invoke(s);
         if (s == State.Won || s == State.Lost)
         {
+            LastWon = s == State.Won;
             LastScore = (int)Score;
             SceneManager.LoadScene("Result");
         }

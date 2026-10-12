@@ -8,8 +8,8 @@ public class RunnerController : MonoBehaviour
     private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
 
     [Header("Jump")]
-    public float jumpForce = 7f;
-    public float gravity = -20f;
+    public float jumpForce = 8f;
+    public float gravity = -15f;
     private float verticalVelocity;
     private bool isGrounded = true;
     private float groundY;

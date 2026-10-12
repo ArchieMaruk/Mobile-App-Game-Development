@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28138003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28138005}
+  - component: {fileID: 28138004}
+  m_Layer: 0
+  m_Name: PickupPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &28138004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28138003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf3d082cf855da45a2182a1af18f62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardPool
+  prefab: {fileID: 7744436641295042695, guid: ccb4130fbd53a6e4f8fc06cb5f659f5c, type: 3}
+  size: 15
+--- !u!4 &28138005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28138003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1082649719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &32649591
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +297,7 @@ GameObject:
   - component: {fileID: 132121833}
   - component: {fileID: 132121837}
   - component: {fileID: 132121838}
+  - component: {fileID: 132121839}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -397,6 +444,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &132121839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132121832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d39c1be9899ec4db03e848089ed5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHit
+  pickupScore: 50
 --- !u!1 &257798381
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +881,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &500327960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500327962}
+  - component: {fileID: 500327961}
+  m_Layer: 0
+  m_Name: HighPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &500327961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500327960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf3d082cf855da45a2182a1af18f62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardPool
+  prefab: {fileID: 3096045457002642734, guid: a21004504cfe79541b5f008a5f143363, type: 3}
+  size: 4
+--- !u!4 &500327962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500327960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1082649719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,13 +1058,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 9.16, z: -19.46}
+  m_LocalRotation: {x: 0.10727446, y: -0, z: -0, w: 0.9942295}
+  m_LocalPosition: {x: 0, y: 7.52, z: -19.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.316, y: 0, z: 0}
 --- !u!45 &519420033
 Skybox:
   m_ObjectHideFlags: 0
@@ -1012,6 +1118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59eccb94561efc841a40ec69fab984f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  runLength: 120
+  startSpeed: 10
+  maxSpeed: 20
 --- !u!1 &608204609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,8 +2259,8 @@ Transform:
   m_GameObject: {fileID: 1002409762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2306,6 +2415,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5933a0dd3b17adb4484cfc6074282b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextScale
+--- !u!1 &1059512758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059512760}
+  - component: {fileID: 1059512759}
+  m_Layer: 0
+  m_Name: LowPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1059512759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059512758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf3d082cf855da45a2182a1af18f62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardPool
+  prefab: {fileID: 3096045457002642734, guid: 514143d75447d364bb5f1e0f5e8c2de2, type: 3}
+  size: 4
+--- !u!4 &1059512760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059512758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1082649719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1082649718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,10 +2470,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1082649719}
-  - component: {fileID: 1082649721}
   - component: {fileID: 1082649720}
   m_Layer: 0
-  m_Name: HazardPool
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,10 +2487,14 @@ Transform:
   m_GameObject: {fileID: 1082649718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5723, y: -2.66663, z: 14.53352}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1558512912}
+  - {fileID: 1059512760}
+  - {fileID: 500327962}
+  - {fileID: 28138005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1082649720
@@ -2351,25 +2509,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816ed7b5ba04db3439c36ebbde3a6567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HazardSpawner
-  interval: 1.5
+  blocks: {fileID: 1558512911}
+  lowBarriers: {fileID: 1059512759}
+  highBarriers: {fileID: 500327961}
+  pickups: {fileID: 28138004}
   laneWidth: 2
-  spawnY: 1
   spawnZ: 40
-  pool: {fileID: 1082649721}
---- !u!114 &1082649721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082649718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf3d082cf855da45a2182a1af18f62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HazardPool
-  prefab: {fileID: 3096045457002642734, guid: 397b32bd7e1207e4b95166ea23a6fb73, type: 3}
-  size: 16
+  startGap: 1.6
+  endGap: 0.8
 --- !u!1 &1164423713
 GameObject:
   m_ObjectHideFlags: 0
@@ -3630,6 +3777,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5933a0dd3b17adb4484cfc6074282b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextScale
+--- !u!1 &1558512910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558512912}
+  - component: {fileID: 1558512911}
+  m_Layer: 0
+  m_Name: BlockPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1558512911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558512910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf3d082cf855da45a2182a1af18f62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardPool
+  prefab: {fileID: 3096045457002642734, guid: 397b32bd7e1207e4b95166ea23a6fb73, type: 3}
+  size: 12
+--- !u!4 &1558512912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558512910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1082649719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833186063
 GameObject:
   m_ObjectHideFlags: 0
