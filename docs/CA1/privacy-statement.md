@@ -14,9 +14,13 @@ Settings are saved locally with PlayerPrefs and never leave the phone:
 - `haptics` – haptics on/off
 - `textScale` – text size (Small / Normal / Large)
 - `shake` – screen shake on/off
+- `wallet.coins` – number of coins the player has (PlayerPrefs)
+- `wallet.level` – coin upgrade level (PlayerPrefs)
 
 Any future save files will be stored in `Application.persistentDataPath`, and the Week 6
 telemetry log will be **local only**. To remove all stored data: uninstall the game.
+
+
 
 ## Network activity
 The game has no online features and plays fully offline. The only network activity is from

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/dev-journal.md",
+                "file": "docs/CA1/privacy-statement.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dev-journal"
+              "title": "privacy-statement"
             }
           }
         ]
@@ -188,19 +188,18 @@
   },
   "active": "e0594ce172656d24",
   "lastOpenFiles": [
-    "Temp/__Backupscenes/0.backup",
-    "Temp/UnityTempFile-90e3ff71c223ca24eaa17641266a4fec",
-    "Temp/__Backupscenes",
-    "Temp/ADB-Refresh3efeeed5558a9524b860f25881935e0e",
-    "Temp/UnityTempFile-fbf74409710e25b44915058aa874d454",
-    "Temp/Burst/burst-aota21hjprx.hpa",
-    "Temp/Burst/burst-aot14p3use4.pjj",
-    "Temp/Burst/burst-aotw1s5uipw.dpp",
-    "Temp/Burst/burst-aotbwkcmpwl.qgl",
-    "Library/Bee/TundraBuildState.state",
-    "Assets/Scripts/Economy/CoinShop.cs.meta",
-    "docs/CA2/baseline/baseline-sheet.md",
     "docs/dev-journal.md",
+    "Temp/__Backupscenes/0.backup",
+    "Temp/__Backupscenes",
+    "Temp/Burst/burst-aotjpdayzig.afb",
+    "Library/Bee/buildprogram0.traceevents",
+    "Assets/Scripts/Economy/WalletPersistence.cs.meta",
+    "Assets/Scripts/Economy/WalletPersistence.cs",
+    "Temp/Burst/burst-aot1gc21nkx.tcz",
+    "Temp/Burst/burst-aot0ic5utv0.wea",
+    "Temp/Burst/burst-aotath51wel.um4",
+    "Temp/Burst/burst-aothwwffb0h.wx0",
+    "docs/CA2/baseline/baseline-sheet.md",
     "README.md",
     "ProfilerCaptures/Mobile App Game Dev_2026-10-07_19-13-43.png",
     "ProfilerCaptures/Mobile App Game Dev_2026-10-07_19-12-48.png",
