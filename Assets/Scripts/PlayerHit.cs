@@ -14,6 +14,7 @@ public class PlayerHit : MonoBehaviour
         else if (other.CompareTag("Pickup"))
         {
             GameManager.Instance.AddScore(pickupScore);
+            if (Wallet.Instance != null) Wallet.Instance.Earn(Wallet.Instance.CoinValue);
             if (other.TryGetComponent(out Hazard h)) h.Despawn();
         }
     }
