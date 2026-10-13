@@ -25,4 +25,4 @@ public class Wallet : MonoBehaviour
         Coins -= NextCost; Level++; Changed?.Invoke();
         return true;
     }
-}
+}   
