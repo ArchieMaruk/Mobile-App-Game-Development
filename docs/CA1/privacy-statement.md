@@ -1,7 +1,8 @@
-# Data-use & Privacy Statement – Whopper (v0.2.0, versionCode 4)
+# Data-use & Privacy Statement – Whopper (updated for v0.3.1)
 
 ## Data collected
-Whopper itself collects **no personal data**. There are no accounts, no sign-in and no in-game tracking.
+Whopper itself collects **no personal data**. There are no accounts, no sign-in, and nothing
+the game records is sent off the device.
 
 However, the **Unity engine** the game is built with includes Unity's own analytics/diagnostics services.
 When the phone is online, Unity may send anonymous technical data (such as device model,
@@ -10,17 +11,19 @@ or read this data. Evidence: the device log shows connection attempts to Unity s
 (see Network activity).
 
 ## Data stored on the device
-Settings are saved locally with PlayerPrefs and never leave the phone:
+Settings and progress are saved locally with PlayerPrefs and never leave the phone:
 - `haptics` – haptics on/off
 - `textScale` – text size (Small / Normal / Large)
 - `shake` – screen shake on/off
-- `wallet.coins` – number of coins the player has (PlayerPrefs)
-- `wallet.level` – coin upgrade level (PlayerPrefs)
+- `wallet.coins` – number of coins the player has
+- `wallet.level` – coin upgrade level
 
-Any future save files will be stored in `Application.persistentDataPath`, and the Week 6
-telemetry log will be **local only**. To remove all stored data: uninstall the game.
+A local gameplay log is also kept:
+- `telemetry.log` in `Application.persistentDataPath` – records session start, level start,
+  complete and fail, and upgrades bought, with a random session id, app version and device model.
+  It never leaves the phone and is only used for balancing during development.
 
-
+To remove all stored data: uninstall the game.
 
 ## Network activity
 The game has no online features and plays fully offline. The only network activity is from
@@ -43,7 +46,8 @@ From `adb shell dumpsys package com.archil.whopper`:
 
 ## How this would be declared on Google Play
 - **Data collection & security:** declare app diagnostics / device info collected by the Unity engine;
-  sent over an encrypted connection; no user-entered data collected.
+  sent over an encrypted connection; no user-entered data collected. The local telemetry log
+  is not collected, because it never leaves the device.
 - **Data sharing:** data goes to Unity Technologies as the engine provider; the game itself shares nothing.
 - **Privacy policy URL:** required for release; this statement would be published as that page.
 - The Data safety form is required before release on the closed, open or production tracks.

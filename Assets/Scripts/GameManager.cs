@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     public static bool LastWon;
 
+    static int attempt;          // counts tries this session
+    int startCoins;              // coins when the run started
+
     [SerializeField] float runLength = 120f;
     [SerializeField] float startSpeed = 10f;
     [SerializeField] float maxSpeed = 20f;
@@ -26,6 +29,14 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         Time.timeScale = 1f;
+    }
+
+    void Start()             
+    {
+        attempt++;
+        startCoins = CurrentCoins();
+        Telemetry.Log("level_start",
+            ("level_id", 1), ("attempt", attempt), ("coins", startCoins));
     }
 
     void OnEnable()  => LifecycleGuard.PausedChanged += OnPaused;
@@ -53,6 +64,17 @@ public class GameManager : MonoBehaviour
         if (s == Current) return;
         Current = s;
         StateChanged?.Invoke(s);
+
+        if (s == State.Won)      // NEW
+            Telemetry.Log("level_complete",
+                ("level_id", 1), ("time_s", Elapsed.ToString("F1")),
+                ("coins_earned", CurrentCoins() - startCoins), ("score", (int)Score));
+
+        if (s == State.Lost)     // NEW
+            Telemetry.Log("level_fail",
+                ("level_id", 1), ("time_s", Elapsed.ToString("F1")),
+                ("cause", "hazard"), ("coins_earned", CurrentCoins() - startCoins));
+
         if (s == State.Won || s == State.Lost)
         {
             LastWon = s == State.Won;
@@ -60,4 +82,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Result");
         }
     }
+
+    // Reads coins from the Wallet, or 0 if it can't be found
+    int CurrentCoins() => Wallet.Instance ? Wallet.Instance.Coins : 0;
 }

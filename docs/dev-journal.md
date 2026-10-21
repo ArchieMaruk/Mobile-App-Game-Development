@@ -210,6 +210,44 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 
 ---
 
+## Date: 21/10/2026
+
+### Week 6 Lab B – Part A (Telemetry class)
+
+- Added a static Telemetry class that logs each event to logcat and to `telemetry.log` in `Application.persistentDataPath`.
+- `session_start` logged from Bootstrap.Awake with app version, device model and Android version.
+
+### Week 6 Lab B – Part B (Five events)
+
+- `level_start` logged in GameManager.Start, because the game already begins in the Playing state, so SetState never fires for it.
+- `level_complete` and `level_fail` logged in SetState; `cause` is always `hazard`, the only way to lose.
+- `upgrade_purchased` logged in Wallet.TryUpgrade, with the cost read before Level goes up.
+- Phone run: level_start (attempt 1, 5710 coins), level_fail after 14.6 s with 550 coins earned, upgrade_purchased at level 11 for 5766 coins.
+
+### Week 6 Lab B – Part C (Event map)
+
+- Wrote `docs/CA2/Economy_Telemetry_Map.md` with the five events.
+- Privacy statement updated to cover `telemetry.log` (local only, removed on uninstall).
+
+### Week 6 Lab B – Part D (Save and resume)
+
+- Home and back: pass, coins unchanged.
+- Force-stop and relaunch: pass, coins unchanged.
+- Low-memory kill (`am kill`): pass, coins unchanged.
+- Pulled `telemetry.log` into `docs/CA2/telemetry/`.
+
+### Week 6 Lab B – Part E (Async Pack 1)
+
+- Async Pack 1 (Monetisation Models and Ethics) due Sun 1 Nov 2026, 23:59.
+
+### Fixes
+
+- No telemetry lines on the phone at first: it was still running the old build. Waited for Unity to finish compiling and rebuilt.
+- `upgrade_purchased` used `upgrade_id=speed`, but the upgrade makes pickups worth more. Changed it to `coin_value`.
+- `adb` not recognised in a new terminal; the Set-Alias line has to be run in every new window.
+
+---
+
 ## Reflections
 
 ### Week 2 – Lifecycle, accessibility, scope
@@ -235,3 +273,7 @@ The game now has a full lane: five chunk types, a speed ramp, and a 2-minute win
 ### Week 6 Lab A – Economy loop
 
 The game now has a coin loop: pickups earn coins, coins buy an upgrade that makes pickups worth more, and the wallet survives the app being closed. The store is a fake behind an interface, so a real store could be added later without touching gameplay code. I put the Upgrade and Buy buttons on the Result screen, because a shop during a run would interrupt the swiping. The first upgrade landed at 1:36, inside the 2-minute target, without tuning.
+
+### Week 6 Lab B – Telemetry
+
+The game now records what happens in each run, without any SDK or data leaving the phone. Five events are enough to see run length, why runs end and when upgrades are bought. The biggest lesson was that a phone build can be out of date: Unity hadn't finished recompiling, so the first test ran old code. The save tests all passed, because the wallet saves on every change and on pause rather than on quit.
