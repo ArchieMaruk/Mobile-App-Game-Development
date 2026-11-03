@@ -1,4 +1,5 @@
-| Device | Android | Serial (last 4) | Install result | Notes |
-|--------|---------|-----------------|----------------|-------|
-| Samsung Galaxy A02s (SM-A025F) | 12 | 4J0J | Success, versionCode 4 | Own test phone, ARMv7 only, 60 Hz, 720x1600 |
-| Samsung Galaxy S25 (SM-S931B) | 16 | 18BT | Success, versionCode 4 | ARM64. Same signature (8a14a1b2) as own phone. Debug Probe button correctly hidden in Release build. No other issues seen. |
+| Device                         | Android | Serial (last 4) | Install result         | Notes                                                                                                                      |
+| ------------------------------ | ------- | --------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Samsung Galaxy A02s (SM-A025F) | 12      | 4J0J            | Success, versionCode 4 | Own test phone, ARMv7 only, 60 Hz, 720x1600                                                                                |
+| Samsung Galaxy S25 (SM-S931B)  | 16      | 18BT            | Success, versionCode 4 | ARM64. Same signature (8a14a1b2) as own phone. Debug Probe button correctly hidden in Release build. No other issues seen. |
+| Samsung Galaxy S26+ (SM-S947B) | 17      | L4FP            | Success, 0.5.0         | New main test phone from 3 Nov 2026. 120 Hz, ARM64.                                                                        |

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/CA2/baseline/logcat-ap-events.md",
+                "file": "docs/dev-journal.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "logcat-ap-events"
+              "title": "dev-journal"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 273.5
   },
   "right": {
     "id": "b53d7d08d842ae3e",
@@ -188,9 +188,14 @@
   },
   "active": "e0594ce172656d24",
   "lastOpenFiles": [
+    "docs/CA1/device-matrix.md",
+    "README.md",
+    "docs/CA2/baseline/logcat-ap-events.md",
+    "Temp/UnityTempFile-ba4ab0e2e011ded4b95bc20c4c980e4b",
+    "Mobile Game Dev Vault/Labsheets/W07-LabB-LabSheet.md",
+    "Mobile Game Dev Vault/Labsheets/W07-LabA-LabSheet.md",
     "Temp/UnityTempFile-1c157ae641f3afb4199a3b2fc8962b61",
     "docs/CA2/baseline/perf-modes.md",
-    "docs/CA2/baseline/logcat-ap-events.md",
     "docs/dev-journal.md",
     "Library/Bee/artifacts/Android/libunity/arm64-v8a/stripped/libunity.so",
     "Library/Bee/artifacts/Android/libunity/arm64-v8a/unstripped/libunity.so",
@@ -200,8 +205,6 @@
     "Library/Bee/artifacts/Android/libunity/arm64-v8a/UnityClassRegistration.o",
     "Library/Bee/artifacts/Android/libunity/arm64-v8a/stripped",
     "Library/Bee/artifacts/Android/libunity/arm64-v8a/libunity.sym.so",
-    "Library/Bee/artifacts/Android/libunity/arm64-v8a",
-    "Library/Bee/artifacts/Android/AsyncPluginsFromLinker/arm64-v8a/lib_burst_generated.so",
     "Library/PackageCache/com.unity.adaptiveperformance.google.android@f693b5f5155b/Documentation~/whats-new.md",
     "Library/PackageCache/com.unity.adaptiveperformance.google.android@f693b5f5155b/Documentation~/TableOfContents.md",
     "Library/PackageCache/com.unity.adaptiveperformance.google.android@f693b5f5155b/Documentation~/requirements.md",
@@ -230,9 +233,6 @@
     "Library/PackageCache/com.unity.adaptiveperformance@113b71fc946a/Documentation~/index.md",
     "Library/PackageCache/com.unity.adaptiveperformance@113b71fc946a/Documentation~/api_index.md",
     "Library/PackageCache/com.unity.adaptiveperformance@113b71fc946a/README.md",
-    "Library/PackageCache/com.unity.adaptiveperformance@113b71fc946a/LICENSE.md",
-    "Library/PackageCache/com.unity.adaptiveperformance@113b71fc946a/CHANGELOG.md",
-    "README.md",
-    "docs/CA2/Economy_Telemetry_Map.md"
+    "Library/PackageCache/com.unity.adaptiveperformance@113b71fc946a/LICENSE.md"
   ]
 }

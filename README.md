@@ -4,11 +4,20 @@
 **Engine:** Unity 6.6 (6000.6.0f1) · **Platform:** Android (sideload)
 
 ## Test device
-- Phone: Samsung Galaxy A02s (SM-A025F)
-- Android: 12 (API 31)
-- Graphics API: OpenGL ES 3
-- Boot line:
-  `[Boot] samsung SM-A025F | Android OS 12 / API-31 (SP1A.210812.016/A025FXXS8CXH1) | OpenGLES3 | 720x1600 @ 280 dpi`
+
+**Main phone (from 3 Nov 2026)**
+* Phone: Samsung Galaxy S26+ (SM-S947B)
+* Android: 17
+* Refresh rate: up to 120 Hz
+* Architecture: ARM64
+
+**Earlier phone (Weeks 1–7)**
+* Phone: Samsung Galaxy A02s (SM-A025F)
+* Android: 12 (API 31)
+* Graphics API: OpenGL ES 3
+* Boot line:
+`[Boot] samsung SM-A025F | Android OS 12 / API-31 (SP1A.210812.016/A025FXXS8CXH1) | OpenGLES3 | 720x1600 @ 280 dpi`
+
 
 ## Build profiles
 - **Android Dev**: Development Build on, Autoconnect Profiler on. Used for profiling and testing.
