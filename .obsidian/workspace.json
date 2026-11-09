@@ -11,12 +11,14 @@
             "id": "6737c24f48af774b",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "docs/CA3/qa/qr-0.6.0.png"
+                "file": "docs/dev-journal.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "qr-0.6.0"
+              "icon": "lucide-file",
+              "title": "dev-journal"
             }
           }
         ]
@@ -97,6 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/dev-journal.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,6 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "docs/dev-journal.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -157,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/CA3/qa/qr-0.6.0.md",
+                "file": "docs/dev-journal.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -184,14 +188,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "ea803a0339cf99fe",
+  "active": "6737c24f48af774b",
   "lastOpenFiles": [
+    "README.md",
+    "docs/CA3/qa/qr-0.6.0.md",
     "docs/CA3/qa/test-plan.md",
     "docs/CA3/qa/device-matrix.md",
     "docs/CA3/qa/logcat-w08-testplan.zip",
     "docs/CA3/qa/qr-0.6.0.png",
-    "docs/CA3/qa/qr-0.6.0.md",
-    "README.md",
     "docs/CA3/qa/Test plan – Whopper 0.6.0 (build 28fbc052), Galaxy S26+ (Android 17).md",
     "docs/CA3/qa/Untitled 1.png",
     "docs/CA3/qa/Builds.md",

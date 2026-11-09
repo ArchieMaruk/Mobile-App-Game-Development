@@ -240,26 +240,98 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 
 - Async Pack 1 (Monetisation Models and Ethics) due Sun 1 Nov 2026, 23:59.
 
-
 ### Fixes
 
 - No telemetry lines on the phone at first: it was still running the old build. Waited for Unity to finish compiling and rebuilt.
 - `upgrade_purchased` used `upgrade_id=speed`, but the upgrade makes pickups worth more. Changed it to `coin_value`.
 - `adb` not recognised in a new terminal; the Set-Alias line has to be run in every new window.
 
+---
+
+## Date: 22/10/2026
+
+### Week 7 Lab A – Part A and B (Adaptive Performance)
+
+- Installed Adaptive Performance with the Android provider, Initialize on Startup and Logging on.
+- AdaptiveBootstrap on App logs thermal and bottleneck events. Phone log: `[AP] active warning=NoWarning level=0.00`.
+- Bottleneck sat on TargetFrameRate (hitting the 60 fps cap), flipping briefly to GPU at the start of a run.
+
+### Week 7 Lab A – Part C (High FPS toggle)
+
+- PerformanceMode: Balanced = 60 fps, render scale 1.0; High FPS = 120 fps, render scale 0.8. Saved in PlayerPrefs (`perf_mode`).
+- High FPS toggle added to the Settings panel. PerfToggle finds PerformanceMode at runtime, because App is in Boot and the toggle is in Game, so they can't be linked in the Inspector.
+- Render scale reset to 1.0 on the URP Asset before committing.
+
+### Week 7 Lab A – Part D and E (Verify on phone, release 0.5.0, Galaxy A02s)
+
+- Balanced: avg 16.71 ms / p99 16.78 ms. High FPS: avg 16.71 ms / p99 16.79 ms.
+- Same frame time in both modes, because the A02s screen is 60 Hz. High FPS only lowers the render scale on this phone.
+- Saved `perf-modes.md`, `logcat-ap-events.txt`, and balanced/high-fps screenshots in `docs/CA2/baseline/`.
+
+### Fixes
+
+- `adb install` failed because the 0.5.0 APK was saved to `releases/`, not `build/`.
+- First phone log showed no `perf_mode=HighFps` line; a fresh capture showed the toggle working both ways.
+- Phone showed `unauthorized` in adb; had to tap Allow on the USB debugging prompt again.
 
 ---
 
 ## Date: 03/11/2026
 
 ### Test phone change
+
 - Switched main test phone to a Samsung Galaxy S26+ (SM-S947B), Android 17, 120 Hz.
 - Samsung Auto Blocker had to be turned off before USB debugging would work.
 - Old phone (A02s) numbers stay in the docs as history, but can't be compared directly with new ones.
 - Dev builds can now be ARM64 only (faster builds); release builds keep ARMv7 + ARM64.
 - The Week 6 journal entries had been lost in the perf-mode commit; restored them from the v0.4.0-economy tag.
+
 ---
 
+## Date: 09/11/2026
+
+### Week 8 Lab A – Part A (Build, host, QR)
+
+- Release 0.6.0 (versionCode 8), build ID `28fbc052`.
+- SHA-256: 6eb56c948b53609067994416435872e8755a755553a84d84ac7e797a350a44e7
+- Uploaded to OneDrive (anyone with the link, view only), QR saved as `docs/CA3/qa/qr-0.6.0.png`, details in `docs/CA3/qa/builds.md`.
+
+### Week 8 Lab A – Part B (Build stamp)
+
+- BuildStamp on the Settings panel shows version, build ID, device model, Android version, RAM, resolution and Hz.
+- Phone shows `v0.6.0 (28fbc052)`, SM-S947B, Android 17, RAM 11631 MB, 1080x2340 @ 60 Hz. It reads 60 Hz because Android runs games at 60 unless they ask for more.
+- `session_start` telemetry now includes `build`.
+
+### Week 8 Lab A – Part C and E (Feedback form, device matrix)
+
+- Anonymous Microsoft Forms survey with 12 questions; link in `docs/CA3/qa/survey/form-link.md`.
+- Device matrix started with my phone: Galaxy S26+, Exynos (s5e9965), 12 GB, Android 17, 120 Hz, High tier.
+- Peer testing still to do: Async Pack 3 needs 10 testers by Sun 29 Nov 2026.
+
+### Week 8 Lab B – Part A (Start times and memory, Galaxy S26+)
+
+- Cold start: 117 / 85 / 83 ms, median 85 ms (was 453 ms on the A02s).
+- Warm (HOT) start: 49 ms.
+- TOTAL PSS after 5 min: 374 MB, over the 300 MB MDA budget (194 MB on the A02s), likely from the larger screen.
+
+### Week 8 Lab B – Part C (Six-scenario test plan)
+
+- All six passed: resume (10 Home cycles + force-stop), no network, rotation, battery saver, low RAM, cold/warm start.
+- Results in `docs/CA3/qa/test-plan.md`; full log zipped as `logcat-w08-testplan.zip`.
+
+### Week 8 Lab B – Part D (Known issues)
+
+- No test failed, so filed known issues instead in `KnownIssues.md`: swipe only triggers on finger lift, and memory over budget.
+
+### Fixes
+
+- PowerShell profile couldn't be edited (it's on the college OneDrive), so the adb Set-Alias still has to be run in each new window.
+- Firefox has no built-in QR maker; used qr-code-generator.com.
+- First form link copied was the edit link; the shareable one is the ResponsePage link.
+- Logcat capture was 125 MB, over GitHub's 100 MB limit. Zipped it, added the `.txt` to `.gitignore`, and used `git reset --soft` to remove it from the unpushed commit.
+- Obsidian renamed new notes after their headings; renamed them back to `device-matrix.md` and `test-plan.md` with `git mv`.
+
+---
 
 ## Reflections
 
@@ -290,3 +362,11 @@ The game now has a coin loop: pickups earn coins, coins buy an upgrade that make
 ### Week 6 Lab B – Telemetry
 
 The game now records what happens in each run, without any SDK or data leaving the phone. Five events are enough to see run length, why runs end and when upgrades are bought. The biggest lesson was that a phone build can be out of date: Unity hadn't finished recompiling, so the first test ran old code. The save tests all passed, because the wallet saves on every change and on pause rather than on quit.
+
+### Week 7 Lab A – Adaptive performance
+
+The game can now read the phone's thermal state and bottleneck, and players can pick Balanced or High FPS. On the 60 Hz A02s both modes gave the same frame time, which showed me that asking for 120 fps does nothing if the screen can't show it. Wiring the toggle taught me that objects in different scenes can't be linked in the Inspector, so the toggle has to find the persistent object at runtime.
+
+### Week 8 – Peer distribution and QA
+
+Every build now carries a stamp and a build ID, so feedback can be matched to an exact file. The test plan passed all six scenarios on the new phone, which means the save-on-change and pause handling from earlier weeks holds up. The biggest surprise was memory: the S26+'s larger screen pushed PSS to 374 MB, over my budget, so I need to review it. I also learned that a full logcat capture records every app on the phone, which made the file too big for GitHub.
