@@ -323,6 +323,31 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 
 - No test failed, so filed known issues instead in `KnownIssues.md`: swipe only triggers on finger lift, and memory over budget.
 
+### Vertical slice – controls
+
+- Swipes now trigger as soon as the finger has moved far enough, not when it lifts (fixes the Week 2 playtest issue). Each finger only triggers one swipe.
+- Swiping down mid-jump slams the burger to the ground and starts a slide on landing, like Subway Surfers.
+- Lane changes already worked in the air; it was the old on-release swipe that made them feel slow.
+- Jump tuned for more air time: Jump Force 9, Gravity -14 (was 8 / -15).
+
+### Vertical slice – assets
+
+- Imported Kenney Food Kit and KayKit Restaurant Bits (both CC0).
+- Dodge block is now a ketchup bottle, low barrier a knife, high barrier a dish rack.
+- Each prefab keeps its collider and scripts; the cube's Mesh Renderer is off and the model sits inside as a child.
+
+### Vertical slice – distance
+
+- GameManager now tracks `Distance`, adding the current speed every frame, so it speeds up as the run speeds up.
+- The in-game score label shows meters (e.g. `245 m`) instead of points, and only updates when the whole number changes.
+
+### Playtest feedback
+
+- A friend said the slide was too short to get under obstacles comfortably. Raised Slide Duration from 0.6 s to 0.9 s.
+- Friend suggested showing distance in meters instead of score, so a biome change can happen at a set distance. The HUD now shows meters; biome switch kept as a stretch goal.
+- Friend suggested a $ sign so it's clear the number is money. Coin label now shows $, upgrade button "Upgrade ($150)".
+- Friend pointed out the coin-value upgrade is the only thing to spend on. Suggested a shield; planned as a simple "one free hit" shield bought on the Result screen, after missions.
+
 ### Fixes
 
 - PowerShell profile couldn't be edited (it's on the college OneDrive), so the adb Set-Alias still has to be run in each new window.
@@ -330,6 +355,10 @@ The first core verb for my game would be to swipe(dodge/turn) and the first thin
 - First form link copied was the edit link; the shareable one is the ResponsePage link.
 - Logcat capture was 125 MB, over GitHub's 100 MB limit. Zipped it, added the `.txt` to `.gitignore`, and used `git reset --soft` to remove it from the unpushed commit.
 - Obsidian renamed new notes after their headings; renamed them back to `device-matrix.md` and `test-plan.md` with `git mv`.
+- Models stretched and skewed when rotated, because the prefab roots had uneven Scale (e.g. 6, 1.7, 0.5). Moved those numbers into the Box Collider Size and set the root Scale to 1, 1, 1.
+- Typed the collider size into Center by mistake, which moved the hit box away from the barrier; set Center back to 0, 0, 0.
+- First slide-under model (giant pizza) covered all lanes and was hard to read as "go under"; swapped it for a dish rack.
+- After adding the `$` sign, the coins label threw a NullReferenceException: the coins line had been replaced by the upgrade line, and the Game scene has no upgrade button. Put the coins line back first and kept the upgrade lines after the null check.
 
 ---
 

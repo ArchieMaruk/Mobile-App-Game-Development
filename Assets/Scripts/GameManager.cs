@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public State Current { get; private set; } = State.Playing;
     public float Score { get; private set; }
     public float Elapsed { get; private set; }
+    public float Distance { get; private set; }   // meters ran this attempt
     public float Progress => Mathf.Clamp01(Elapsed / runLength);
     public float Speed => Mathf.Lerp(startSpeed, maxSpeed, Progress);
     public event Action<State> StateChanged;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         if (Current != State.Playing) return;
         Elapsed += Time.deltaTime;
         Score += Time.deltaTime * 10f;
+        Distance += Speed * Time.deltaTime;
         if (Elapsed >= runLength) SetState(State.Won);
     }
 
@@ -65,20 +67,22 @@ public class GameManager : MonoBehaviour
         Current = s;
         StateChanged?.Invoke(s);
 
-        if (s == State.Won)      // NEW
+               if (s == State.Won)
             Telemetry.Log("level_complete",
                 ("level_id", 1), ("time_s", Elapsed.ToString("F1")),
-                ("coins_earned", CurrentCoins() - startCoins), ("score", (int)Score));
+                ("coins_earned", CurrentCoins() - startCoins), ("score", (int)Score),
+                ("distance_m", (int)Distance));
 
-        if (s == State.Lost)     // NEW
+        if (s == State.Lost)
             Telemetry.Log("level_fail",
                 ("level_id", 1), ("time_s", Elapsed.ToString("F1")),
-                ("cause", "hazard"), ("coins_earned", CurrentCoins() - startCoins));
+                ("cause", "hazard"), ("coins_earned", CurrentCoins() - startCoins),
+                ("distance_m", (int)Distance));
 
         if (s == State.Won || s == State.Lost)
         {
             LastWon = s == State.Won;
-            LastScore = (int)Score;
+            LastScore = (int)Distance;
             SceneManager.LoadScene("Result");
         }
     }

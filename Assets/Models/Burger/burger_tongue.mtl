@@ -1,0 +1,23 @@
+newmtl Tomato
+Kd 0.900 0.130 0.130
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 10
+d 1
+illum 2
+
+newmtl TomatoInner
+Kd 1.000 0.420 0.380
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 10
+d 1
+illum 2
+
+newmtl TomatoSeed
+Kd 1.000 0.880 0.550
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 10
+d 1
+illum 2

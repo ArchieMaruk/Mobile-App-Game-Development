@@ -22,11 +22,11 @@ public class WalletHud : MonoBehaviour
         if (wallet != null) wallet.Changed -= Refresh;
     }
 
-    void Refresh()
+       void Refresh()
     {
-        coinsLabel.SetText("{0}", wallet.Coins);
+        coinsLabel.SetText("${0}", wallet.Coins);
         if (upgradeButton == null) return;
-        upgradeLabel.SetText("Upgrade ({0})", wallet.NextCost);
+        upgradeLabel.SetText("Upgrade (${0})", wallet.NextCost);
         upgradeButton.interactable = wallet.Coins >= wallet.NextCost;
     }
 

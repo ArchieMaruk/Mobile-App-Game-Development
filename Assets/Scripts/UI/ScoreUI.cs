@@ -8,9 +8,9 @@ public class ScoreUI : MonoBehaviour
 
     void Update()
     {
-        int score = (int)GameManager.Instance.Score;
-        if (score == shown) return;
-        shown = score;
-        label.SetText("{0}", score);
+        int meters = (int)GameManager.Instance.Distance;
+        if (meters == shown) return;   // only update when the number changes
+        shown = meters;
+        label.SetText("{0} m", meters);
     }
 }
