@@ -11,14 +11,12 @@
             "id": "6737c24f48af774b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "docs/CA3/qa/Device matrix – Whopper closed test.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/CA3/qa/qr-0.6.0.png"
               },
-              "icon": "lucide-file",
-              "title": "Device matrix – Whopper closed test"
+              "icon": "lucide-image",
+              "title": "qr-0.6.0"
             }
           }
         ]
@@ -99,7 +97,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/CA3/qa/Device matrix – Whopper closed test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +115,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/CA3/qa/Device matrix – Whopper closed test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/CA3/qa/Device matrix – Whopper closed test.md",
+                "file": "docs/CA3/qa/qr-0.6.0.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,14 +184,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "6737c24f48af774b",
+  "active": "ea803a0339cf99fe",
   "lastOpenFiles": [
-    "docs/CA3/qa/survey/form-link.md",
-    "docs/CA3/qa/Device matrix – Whopper closed test.md",
-    "docs/CA3/qa/Builds.md",
-    "docs/CA3/qa/survey",
+    "docs/CA3/qa/test-plan.md",
+    "docs/CA3/qa/device-matrix.md",
+    "docs/CA3/qa/logcat-w08-testplan.zip",
+    "docs/CA3/qa/qr-0.6.0.png",
     "docs/CA3/qa/qr-0.6.0.md",
-    "qr-0.6.0.png",
+    "README.md",
+    "docs/CA3/qa/Test plan – Whopper 0.6.0 (build 28fbc052), Galaxy S26+ (Android 17).md",
+    "docs/CA3/qa/Untitled 1.png",
+    "docs/CA3/qa/Builds.md",
+    "KnownIssues.md",
+    "docs/CA3/qa/screens/rotation.png",
+    "docs/CA3/qa/screens",
+    "docs/CA2/baseline/baseline-sheet.md",
+    "docs/CA3/qa/logcat-w08-testplan.txt",
+    "docs/CA3/qa/Device matrix – Whopper closed test.md",
+    "docs/CA3/qa/survey/form-link.md",
+    "docs/CA3/qa/survey",
     "docs/CA3/qa",
     "docs/CA3"
   ]

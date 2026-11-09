@@ -71,6 +71,16 @@ What changed
 - Cold start dropped from 716 ms (Week 3) to 453 ms.
 - Time to interactive is now measured with a `[perf]` log on the Menu's first frame, which is a different method from Week 3's "Fully drawn", so the two aren't directly comparable.
 
+
+
+## 9 Nov 2026 – Week 8 Lab B (new phone: Galaxy S26+)
+
+- Build: 0.6.0 (versionCode 8), build ID 28fbc052, release
+- Device: Samsung Galaxy S26+ (SM-S947B), Android 17
+- Cold start (am start -W TotalTime): 117 / 85 / 83 ms, median 85 ms
+- Warm start (HOT): 49 ms
+- TOTAL PSS after 5 min play: 374 MB (382,937 KB)
+- Note: PSS is over the 300 MB MDA budget (was 194 MB on the A02s). Likely from the larger 1080x2340 screen. The phone has 12 GB RAM, so there is plenty of headroom, but the budget needs reviewing.
 ---
 
 ## Still to measure
