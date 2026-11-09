@@ -7,6 +7,7 @@ public class Bootstrap : MonoBehaviour
         Application.targetFrameRate = 60;
         Telemetry.Log("session_start",
     ("app_version", Application.version),
+    ("build", BuildStamp.BuildId),
     ("device_model", SystemInfo.deviceModel),
     ("android", SystemInfo.operatingSystem));
         DontDestroyOnLoad(gameObject);
