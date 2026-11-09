@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -6,44 +7,60 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class TapSwipeInput : MonoBehaviour
 {
     public float swipeDp = 50f;
-    public float tapMax = 0.3f;
-    public RunnerController runner; //This is where the player object is being dragged to in the inspector
+    public RunnerController runner; // the player object, dragged in via the Inspector
+
+    // fingers that have already swiped, so one swipe only triggers once
+    readonly HashSet<int> usedTouches = new HashSet<int>();
 
     void OnEnable() => EnhancedTouchSupport.Enable();
     void OnDisable() => EnhancedTouchSupport.Disable();
 
     void Update()
     {
-
         if (LifecycleGuard.IsPaused) return;
+
+        float px = swipeDp * Mathf.Max(Screen.dpi, 160f) / 160f;
 
         foreach (var t in Touch.activeTouches)
         {
-            if (t.phase != TouchPhase.Ended) continue;
+            int id = t.touchId;
 
-            float px = swipeDp * Mathf.Max(Screen.dpi, 160f) / 160f;
-            Vector2 d = t.screenPosition - t.startScreenPosition;
+            // new finger down: forget anything from before
+            if (t.phase == TouchPhase.Began) { usedTouches.Remove(id); continue; }
 
-            if (d.magnitude >= px)
+            bool fingerUp = t.phase == TouchPhase.Ended || t.phase == TouchPhase.Canceled;
+
+            if (!usedTouches.Contains(id))
             {
-                Vector2 dir = d.normalized;
-                if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-                {
-                    if (dir.x > 0) runner.MoveRight();   //Move Right and 
-                    else runner.MoveLeft();
-                }
-                else
-                {
-                    if (dir.y > 0) {
+                Vector2 d = t.screenPosition - t.startScreenPosition;
 
-                        runner.Jump(); 
-                        Haptics.Pulse();
-                        }  //Jump
-                    else runner.Slide();
-                    
+                // fire as soon as the finger has moved far enough
+                if (d.magnitude >= px)
+                {
+                    usedTouches.Add(id);
+                    DoSwipe(d);
                 }
             }
-            // Tap is intentionally unused for this runner
+
+            if (fingerUp) usedTouches.Remove(id);
+        }
+    }
+
+    void DoSwipe(Vector2 d)
+    {
+        if (Mathf.Abs(d.x) > Mathf.Abs(d.y))
+        {
+            if (d.x > 0) runner.MoveRight();
+            else runner.MoveLeft();
+        }
+        else
+        {
+            if (d.y > 0)
+            {
+                runner.Jump();
+                Haptics.Pulse();
+            }
+            else runner.Slide();
         }
     }
 }

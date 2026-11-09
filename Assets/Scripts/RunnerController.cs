@@ -18,6 +18,7 @@ public class RunnerController : MonoBehaviour
     public float slideDuration = 0.6f;
     private bool isSliding;
     private float slideTimer;
+    private bool slideQueued;   // slide as soon as we land
 
     void Awake()
     {
@@ -32,10 +33,6 @@ public class RunnerController : MonoBehaviour
         float targetX = (currentLane - 1) * laneWidth;
         pos.x = Mathf.Lerp(pos.x, targetX, laneChangeSpeed * Time.deltaTime);
 
-
-
-
-
         // Gravity and landing (lower floor while sliding)
         float floor = isSliding ? groundY - 0.5f : groundY;
         if (!isGrounded) verticalVelocity += gravity * Time.deltaTime;
@@ -44,10 +41,15 @@ public class RunnerController : MonoBehaviour
         {
             pos.y = floor;
             verticalVelocity = 0f;
+
+            // just landed from a slam-down: start the slide now
+            if (!isGrounded && slideQueued)
+            {
+                slideQueued = false;
+                StartSlide();
+            }
             isGrounded = true;
         }
-
-
 
         // Slide timer
         if (isSliding)
@@ -59,10 +61,6 @@ public class RunnerController : MonoBehaviour
         transform.position = pos;
     }
 
-
-
-
-
     public void MoveLeft()  { if (currentLane > 0) currentLane--; }
     public void MoveRight() { if (currentLane < 2) currentLane++; }
 
@@ -70,21 +68,35 @@ public class RunnerController : MonoBehaviour
     {
         if (!isGrounded) return;
         if (isSliding) EndSlide();
+        slideQueued = false;
         isGrounded = false;
         verticalVelocity = jumpForce;
     }
 
     public void Slide()
-{
-    if (!isGrounded || isSliding) return;
-    isSliding = true;
-    slideTimer = slideDuration;
-    transform.localScale = new Vector3(1f, 0.5f, 1f);
-}
+    {
+        if (isSliding) return;
 
-void EndSlide()
-{
-    isSliding = false;
-    transform.localScale = Vector3.one;
-}
+        if (!isGrounded)
+        {
+            // in the air: drop fast, then slide on landing
+            verticalVelocity = -jumpForce * 2f;
+            slideQueued = true;
+            return;
+        }
+        StartSlide();
+    }
+
+    void StartSlide()
+    {
+        isSliding = true;
+        slideTimer = slideDuration;
+        transform.localScale = new Vector3(1f, 0.5f, 1f);
+    }
+
+    void EndSlide()
+    {
+        isSliding = false;
+        transform.localScale = Vector3.one;
+    }
 }
