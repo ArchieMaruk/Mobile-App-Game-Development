@@ -430,9 +430,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RunnerController
   laneWidth: 2
   laneChangeSpeed: 10
-  jumpForce: 7
+  jumpForce: 9
   gravity: -20
-  slideDuration: 0.6
+  slideDuration: 1
 --- !u!54 &132121838
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -731,7 +731,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TapSwipeInput
   swipeDp: 50
-  tapMax: 0.3
   runner: {fileID: 132121837}
 --- !u!114 &442369160
 MonoBehaviour:
@@ -834,7 +833,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1074,13 +1073,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10727446, y: -0, z: -0, w: 0.9942295}
-  m_LocalPosition: {x: 0, y: 7.52, z: -19.9}
+  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
+  m_LocalPosition: {x: 0, y: 6, z: -19.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 12.316, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9, y: 0, z: 0}
 --- !u!45 &519420033
 Skybox:
   m_ObjectHideFlags: 0
