@@ -15,7 +15,9 @@ public class PlayerHit : MonoBehaviour
         {
             GameManager.Instance.AddScore(pickupScore);
             if (Wallet.Instance != null) Wallet.Instance.Earn(Wallet.Instance.CoinValue);
+            MissionManager.Instance?.Report(MissionType.Pickups);
             if (other.TryGetComponent(out Hazard h)) h.Despawn();
+            MissionManager.Instance?.Report(MissionType.Pickups);
         }
     }
 }

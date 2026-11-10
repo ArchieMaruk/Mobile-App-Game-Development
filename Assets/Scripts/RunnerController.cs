@@ -61,8 +61,23 @@ public class RunnerController : MonoBehaviour
         transform.position = pos;
     }
 
-    public void MoveLeft()  { if (currentLane > 0) currentLane--; }
-    public void MoveRight() { if (currentLane < 2) currentLane++; }
+    public void MoveLeft()
+    {
+        if (currentLane > 0)
+        {
+            currentLane--;
+            MissionManager.Instance?.Report(MissionType.LaneChanges);
+        }
+    }
+
+    public void MoveRight()
+    {
+        if (currentLane < 2)
+        {
+            currentLane++;
+            MissionManager.Instance?.Report(MissionType.LaneChanges);
+        }
+    }
 
     public void Jump()
     {
@@ -71,6 +86,7 @@ public class RunnerController : MonoBehaviour
         slideQueued = false;
         isGrounded = false;
         verticalVelocity = jumpForce;
+        MissionManager.Instance?.Report(MissionType.Jumps);
     }
 
     public void Slide()
@@ -92,6 +108,7 @@ public class RunnerController : MonoBehaviour
         isSliding = true;
         slideTimer = slideDuration;
         transform.localScale = new Vector3(1f, 0.5f, 1f);
+        MissionManager.Instance?.Report(MissionType.Slides);
     }
 
     void EndSlide()
