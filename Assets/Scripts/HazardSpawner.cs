@@ -9,6 +9,8 @@ public class HazardSpawner : MonoBehaviour
     [SerializeField] float spawnZ = 40f;
     [SerializeField] float startGap = 1.6f;
     [SerializeField] float endGap = 0.8f;
+
+    [SerializeField] int testChunk = -1;   // set 0-9 to only spawn that chunk, -1 = random
     CancellationTokenSource cts;
 
     void OnEnable()
@@ -35,29 +37,75 @@ public class HazardSpawner : MonoBehaviour
         catch (OperationCanceledException) { }
     }
 
-    void SpawnChunk()
+ void SpawnChunk()
+{
+    int lane = UnityEngine.Random.Range(0, 3);
+    int type = testChunk >= 0 ? testChunk : UnityEngine.Random.Range(0, 10);
+
+    switch (type)
     {
-        int lane = UnityEngine.Random.Range(0, 3);
-        switch (UnityEngine.Random.Range(0, 5))
-        {
-            case 0: // single block
-                blocks.Spawn(Lane(lane, 1f));
-                break;
-            case 1: // double block, one lane free
+        case 0: // single block
+            blocks.Spawn(Lane(lane, 1f));
+            break;
+
+        case 1: // double block, one lane free
+            for (int i = 0; i < 3; i++)
+                if (i != lane) blocks.Spawn(Lane(i, 1f));
+            break;
+
+        case 2: // low barrier: jump
+            lowBarriers.Spawn(new Vector3(0f, 0.25f, spawnZ));
+            break;
+
+        case 3: // high barrier: slide
+            highBarriers.Spawn(new Vector3(0f, 2.6f, spawnZ));
+            break;
+
+        case 4: // pickup line
+            for (int i = 0; i < 5; i++) pickups.Spawn(Lane(lane, 1f, i * 2f));
+            break;
+
+        case 5: // knife + bottles: get to the free lane, then jump
+            lowBarriers.Spawn(new Vector3(0f, 0.25f, spawnZ));
+            for (int i = 0; i < 3; i++)
+                if (i != lane) blocks.Spawn(Lane(i, 1f, 8f));
+            break;
+
+        case 6: // dish rack, then a bottle: slide, then dodge
+            highBarriers.Spawn(new Vector3(0f, 2.6f, spawnZ));
+            blocks.Spawn(Lane(lane, 1f, 8f));
+            break;
+
+        case 7: // zigzag: free lane switches side each row
+            for (int row = 0; row < 3; row++)
+            {
+                int free = row % 2 == 0 ? 0 : 2;
                 for (int i = 0; i < 3; i++)
-                    if (i != lane) blocks.Spawn(Lane(i, 1f));
-                break;
-            case 2: // low barrier: jump
-                lowBarriers.Spawn(new Vector3(0f, 0.25f, spawnZ));
-                break;
-            case 3: // high barrier: slide
-                highBarriers.Spawn(new Vector3(0f, 2.6f, spawnZ));
-                break;
-            default: // pickup line
-                for (int i = 0; i < 5; i++) pickups.Spawn(Lane(lane, 1f, i * 2f));
-                break;
-        }
+                    if (i != free) blocks.Spawn(Lane(i, 1f, row * 8f));
+            }
+            break;
+
+        case 8: // coin arc over a knife: jump to collect
+            lowBarriers.Spawn(new Vector3(0f, 0.25f, spawnZ));
+            for (int i = 0; i < 5; i++)
+            {
+                float z = (i - 2) * 2f;            // -4, -2, 0, 2, 4
+                float y = 1f + 1.5f * (1f - (z / 4f) * (z / 4f));
+                pickups.Spawn(Lane(lane, y, z));
+            }
+            break;
+
+        default: // 9: bottle wall with coins in the gap
+            for (int i = 0; i < 3; i++)
+                if (i != lane)
+                {
+                    blocks.Spawn(Lane(i, 1f));
+                    blocks.Spawn(Lane(i, 1f, 3f));
+                }
+            for (int i = 0; i < 3; i++) pickups.Spawn(Lane(lane, 1f, i * 2f));
+            break;
     }
+}
 
     Vector3 Lane(int lane, float y, float extraZ = 0f) =>
         new Vector3((lane - 1) * laneWidth, y, spawnZ + extraZ);

@@ -2379,6 +2379,7 @@ GameObject:
   - component: {fileID: 1002409765}
   - component: {fileID: 1002409764}
   - component: {fileID: 1002409763}
+  - component: {fileID: 1002409767}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -2433,7 +2434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee2347d874b1356478fa4a93514cc7a9, type: 2}
+  - {fileID: 2100000, guid: b6560dfbac292a54c8f2ef3d52ac7cec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2480,6 +2481,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002409767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002409762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04952970408fe340b060b1fdb19f0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloorScroll
+  floorLength: 60
+  flip: 1
 --- !u!1 &1012119989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2747,7 @@ MonoBehaviour:
   spawnZ: 40
   startGap: 1.6
   endGap: 0.8
+  testChunk: 5
 --- !u!1001 &1123233066
 PrefabInstance:
   m_ObjectHideFlags: 0
