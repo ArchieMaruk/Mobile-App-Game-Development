@@ -83,15 +83,20 @@ public class HazardSpawner : MonoBehaviour
                 length = 8f;
                 break;
 
-            case 7: // zigzag: free lane switches side each row
-                for (int row = 0; row < 3; row++)
-                {
-                    int free = row % 2 == 0 ? 0 : 2;
-                    for (int i = 0; i < 3; i++)
-                        if (i != free) blocks.Spawn(Lane(i, 1f, row * 8f));
-                }
-                length = 16f;
-                break;
+           
+            case 7: // staircase: free lane moves one step each row
+            {
+    int dir = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;   // left-to-right or right-to-left
+    int start = dir == 1 ? 0 : 2;
+    for (int row = 0; row < 3; row++)
+    {
+        int free = start + dir * row;
+        for (int i = 0; i < 3; i++)
+            if (i != free) blocks.Spawn(Lane(i, 1f, row * 12f));
+    }
+    length = 24f;
+    break;
+            }
 
             case 8: // coin arc over a knife: jump to collect
                 lowBarriers.Spawn(new Vector3(0f, 0.25f, spawnZ));
